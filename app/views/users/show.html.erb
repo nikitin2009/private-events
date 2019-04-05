@@ -1,2 +1,6 @@
 <h1> id: <%= @user.id %>, name: <%= @user.name %></h1>
-
+<ul>
+  <% @user.events.each do |event| %>
+    <li><%=event.id%>, <%=event.title%>, <%= event.date%> </li>
+  <% end %>
+</ul>
