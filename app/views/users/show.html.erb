@@ -1,6 +1,19 @@
 <h1> id: <%= @user.id %>, name: <%= @user.name %></h1>
+
+<% if @user.events.any? %>
+<h2>Created events</h2>
 <ul>
   <% @user.events.each do |event| %>
     <li><%=event.id%>, <%=event.title%>, <%= event.date%> </li>
   <% end %>
 </ul>
+<% end %>
+
+<% if @user.attended_events.any? %>
+<h2>Attended events</h2>
+<ol>
+  <% @user.attended_events.each do |event| %>
+    <li><%=event.id%>, <%=event.title%>, <%= event.date%> </li>
+  <% end %>
+</ol>
+<% end %>

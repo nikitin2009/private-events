@@ -14,6 +14,8 @@ class UsersController < ApplicationController
   end
 
   def show
+    @upcoming_events = @user.upcoming_events
+    @prev_events = @user.previous_events
   end
 
    private
