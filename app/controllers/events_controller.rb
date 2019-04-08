@@ -2,7 +2,8 @@ class EventsController < ApplicationController
   include SessionsHelper
 
   def index
-    @events = Event.all
+    @previous_events = Event.previous
+    @upcoming_events = Event.upcoming
   end
 
   def new

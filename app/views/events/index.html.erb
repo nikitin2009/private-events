@@ -1,7 +1,11 @@
 <h1> Events#index </h1>
 
-<ul>
-  <% @events.each do |event| %>
-    <li> <%=event.id%>, <%=event.title%>, <%=event.date%> </li>
-  <% end %>
-</ul>
+
+<% if @previous_events.any? %>
+  <h2> Previous Events </h2>
+  <ol>
+    <% @previous_events.each do |previous_event| %>
+
+    <% end %>
+  </ol>
+<% end %>

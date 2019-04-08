@@ -1,19 +1,31 @@
 <h1> id: <%= @user.id %>, name: <%= @user.name %></h1>
 
 <% if @user.events.any? %>
-<h2>Created events</h2>
-<ul>
-  <% @user.events.each do |event| %>
-    <li><%=event.id%>, <%=event.title%>, <%= event.date%> </li>
-  <% end %>
-</ul>
+  <h2>Created events</h2>
+  <ul>
+    <% @user.events.each do |event| %>
+      <li><%=event.id%>, <%=event.title%>, <%= event.date%> </li>
+    <% end %>
+  </ul>
 <% end %>
 
 <% if @user.attended_events.any? %>
-<h2>Attended events</h2>
-<ol>
-  <% @user.attended_events.each do |event| %>
-    <li><%=event.id%>, <%=event.title%>, <%= event.date%> </li>
+  <h2>Attended events</h2>
+  <% if @user.upcoming_events.any? %>
+    <h4> Upcoming events </h4>
+    <ol>
+      <% @user.upcoming_events.each do |upcoming_event| %>
+        <li> <%= upcoming_event.title %>, <%= upcoming_event.date %></li>
+      <% end %>
+    </ol>
   <% end %>
-</ol>
+  <% if @user.previous_events.any? %>
+    <h4> Previously attended events </h4>
+      <% @user.previous_events.each do |previous_event| %>
+        <li> <%= previous_event.title %>, <%= previous_event.date %></li>
+      <% end %>
+
+  <% end %>
 <% end %>
+
+
