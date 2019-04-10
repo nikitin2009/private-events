@@ -1,6 +1,8 @@
 class EventsController < ApplicationController
   include SessionsHelper
 
+  before_action :require_logged_in, only: [:create]
+
   def index
     @previous_events = Event.previous
     @upcoming_events = Event.upcoming
@@ -27,5 +29,11 @@ class EventsController < ApplicationController
 
   def event_params
     params.require(:event).permit(:title, :date, :description)
+  end
+
+  def require_logged_in
+    if current_user.nil?
+      redirect_to signin_path
+    end
   end
 end
