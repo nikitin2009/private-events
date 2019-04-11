@@ -13,9 +13,10 @@
 <% end %>
 
 <h2>Invite somebody</h2>
-<%= form_for(@invitation) do |f| %>
-  <%= f.text :receiver_id %>
-  <%= f.hidden_field :event_id, @event.id %>
+<%= form_for(@new_invitation) do |f| %>
+  <%= f.hidden_field :event_id %>
+  <%= f.hidden_field :sender_id %>
+  <%= f.select :receiver_id, @user_options %>
   <%= f.submit "Invite"%>
 <% end %>
 

@@ -14,7 +14,8 @@ class EventsController < ApplicationController
 
   def show
     @event = Event.find_by(id: params[:id])
-    @invitation = current_user.sent_invitation.build
+    @new_invitation = @event.invitations.build(sender_id: current_user)
+    @user_options = User.all.map{ |u| [ u.name, u.id ] }
   end
 
   def create
