@@ -3,6 +3,8 @@ class Event < ApplicationRecord
   belongs_to :creator, class_name: "User"
   has_many :attendees, through: :attendances, source: :attendee
 
+  has_many :invitations
+
   scope :upcoming, -> { where("date > ?", Time.now) }
   scope :previous, -> { where("date < ?", Time.now) }
 end
