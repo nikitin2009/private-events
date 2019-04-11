@@ -1,7 +1,6 @@
 class InvitationsController < ApplicationController
   def create
     @invitation = Invitation.new(invitation_params)
-    debugger
     if @invitation.save
       redirect_to @invitation.event
     else

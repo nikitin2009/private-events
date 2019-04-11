@@ -4,20 +4,22 @@
 <h2>Event creator: <%= @event.creator.name %></h2>
 
 <% if @event.attendees.any? %>
-<h3>Event attendees:</h3>
-<ol>
-  <% @event.attendees.each do |attendee| %>
-    <li><%= attendee.name %></li>
-  <% end %>
-</ol>
+  <h3>Event attendees:</h3>
+  <ol>
+    <% @event.attendees.each do |attendee| %>
+      <li><%= attendee.name %></li>
+    <% end %>
+  </ol>
 <% end %>
 
-<h2>Invite somebody</h2>
-<%= form_for(@new_invitation) do |f| %>
-  <%= f.hidden_field :event_id %>
-  <%= f.hidden_field :sender_id %>
-  <%= f.select :receiver_id, @user_options %>
-  <%= f.submit "Invite"%>
+<% unless current_user.nil? %>
+  <h2>Invite somebody</h2>
+  <%= form_for(@new_invitation) do |f| %>
+    <%= f.hidden_field :event_id %>
+    <%= f.hidden_field :sender_id%>
+    <%= f.select :receiver_id, @user_options %>
+    <%= f.submit "Invite"%>
+    <% end %>
 <% end %>
 
 
