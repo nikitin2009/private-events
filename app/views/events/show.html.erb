@@ -11,3 +11,20 @@
   <% end %>
 </ol>
 <% end %>
+
+<h2>Invite somebody</h2>
+<%= form_for(@invitation) do |f| %>
+  <%= f.text :receiver_id %>
+  <%= f.hidden_field :event_id, @event.id %>
+  <%= f.submit "Invite"%>
+<% end %>
+
+
+<h2>Invited Users </h2>
+<% if @event.invited_users %>
+  <ol>
+    <% @event.invited_users.each do |user| %>
+      <li><%= link_to user.name, user %> </li>
+    <% end %>
+  </ol>
+<% end %>
