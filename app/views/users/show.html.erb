@@ -35,7 +35,8 @@
     <% @user.received_invitations.not_accepted.each do |invitation| %>
       <li>
         <%= invitation.event.title %>, <%= invitation.event.date %>
-        ( <%= link_to 'Accept', invitation, method: :put %> )
+        ( <%= link_to 'Accept', invitation, method: :put %> ) -
+        ( <%= link_to 'Decline', invitation, method: :delete %> )
       </li>
     <% end %>
   </ul>
