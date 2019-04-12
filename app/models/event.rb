@@ -8,5 +8,11 @@ class Event < ApplicationRecord
 
   scope :upcoming, -> { where("date > ?", Time.now) }
   scope :previous, -> { where("date < ?", Time.now) }
+
+
+  def can_invite?(user)
+    self.attendees.exclude?(user) && self.invited_users.exclude?(user) && self.creator != user
+  end
+
 end
 

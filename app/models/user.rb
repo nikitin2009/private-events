@@ -13,8 +13,4 @@ class User < ApplicationRecord
   def previous_events
     self.attended_events.previous
   end
-
-  def can_invited_to?(event)
-    event.attendees.exclude?(self) && event.invited_users.exclude?(self)
-  end
 end

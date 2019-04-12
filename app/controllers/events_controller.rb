@@ -16,7 +16,8 @@ class EventsController < ApplicationController
     @event = Event.find_by(id: params[:id])
     unless current_user.nil?
       @new_invitation = @event.invitations.build(sender_id: current_user.id)
-      @user_options = User.all.map { |u| [ u.name, u.id ] if u.can_invited_to?(@event)}.compact!
+      @user_options = User.all.map { |u| [ u.name, u.id ] if @event.can_invite?(u) && u != current_user }
+      @user_options.compact!
     end
   end
 
