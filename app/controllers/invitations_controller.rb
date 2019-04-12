@@ -8,6 +8,13 @@ class InvitationsController < ApplicationController
     end
   end
 
+  def update
+    invitation = Invitation.find(params[:id])
+    invitation.update(accepted: true)
+    invitation.event.attendees << invitation.receiver
+    redirect_to invitation.receiver
+  end
+
   private
 
     def invitation_params

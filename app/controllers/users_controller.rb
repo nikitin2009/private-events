@@ -1,5 +1,10 @@
 class UsersController < ApplicationController
+  include SessionsHelper
+
   before_action :set_user, only: [:show]
+  before_action :logged_in , only: [:show]
+  before_action :correct_user , only: [:show]
+
   def new
     @user = User.new
   end
@@ -26,5 +31,13 @@ class UsersController < ApplicationController
 
   def user_params
     params.require(:user).permit(:name)
+  end
+
+  def logged_in
+    redirect_to root_path unless current_user
+  end
+
+  def correct_user
+    redirect_to root_path unless current_user == @user
   end
 end
