@@ -29,7 +29,7 @@
 <% if @event.invited_users %>
   <ol>
     <% @event.invited_users.each do |user| %>
-      <li><%= link_to user.name, user %> </li>
+      <li><%= user.name %> </li>
     <% end %>
   </ol>
 <% end %>
