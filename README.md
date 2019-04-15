@@ -1,24 +1,6 @@
-# README
+# Private Events 
+## This is part of the Private Events Project in The Odin Project’s Ruby on Rails Curriculum. Find it at http://www.theodinproject.com
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+[The Odin Project - Private Events](https://www.theodinproject.com/courses/ruby-on-rails/lessons/associations)
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+by [Burhan](https://github.com/btuerker), [Alex](https://github.com/nikitin2009)

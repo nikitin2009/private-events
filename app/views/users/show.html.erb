@@ -1,0 +1,44 @@
+<h1> id: <%= @user.id %>, name: <%= @user.name %></h1>
+
+<% if @user.events.any? %>
+  <h2>Created events</h2>
+  <ul>
+    <% @user.events.each do |event| %>
+      <li><%=event.id%>, <%=event.title%>, <%= event.date%> </li>
+    <% end %>
+  </ul>
+<% end %>
+
+<% if @user.attended_events.any? %>
+  <h2>Attended events</h2>
+  <% if @user.upcoming_events.any? %>
+    <h4> Upcoming events </h4>
+    <ul>
+      <% @user.upcoming_events.each do |upcoming_event| %>
+        <li> <%= upcoming_event.title %>, <%= upcoming_event.date %></li>
+      <% end %>
+    </ul>
+  <% end %>
+  <% if @user.previous_events.any? %>
+    <h4> Previously attended events </h4>
+    <ul>
+      <% @user.previous_events.each do |previous_event| %>
+        <li> <%= previous_event.title %>, <%= previous_event.date %></li>
+      <% end %>
+    </ul>
+  <% end %>
+<% end %>
+
+<% if @user.received_invitations.not_accepted.any? %>
+  <h2>You are invited:</h2>
+  <ul>
+    <% @user.received_invitations.not_accepted.each do |invitation| %>
+      <li>
+        <%= invitation.event.title %>, <%= invitation.event.date %>
+        ( <%= link_to 'Accept', invitation, method: :put %> ) -
+        ( <%= link_to 'Decline', invitation, method: :delete %> )
+      </li>
+    <% end %>
+  </ul>
+<% end %>
+

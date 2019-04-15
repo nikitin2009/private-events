@@ -1,0 +1,20 @@
+<h1>Events</h1>
+
+
+<% if @previous_events.any? %>
+  <h2> Previous Events </h2>
+  <ol>
+    <% @previous_events.each do |previous_event| %>
+      <li><%= link_to previous_event.title, previous_event %>, date: <%= previous_event.date %></li>
+    <% end %>
+  </ol>
+<% end %>
+
+<% if @upcoming_events.any? %>
+  <h2> Upcoming Events </h2>
+  <ol>
+    <% @upcoming_events.each do |upcoming_event| %>
+      <li><%= link_to upcoming_event.title, upcoming_event%>, date: <%= upcoming_event.date %></li>
+    <% end %>
+  </ol>
+<% end %>

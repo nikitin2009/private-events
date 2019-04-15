@@ -1,0 +1,8 @@
+<h1> Signin Page </h1>
+<%= form_for :session do |f|%>
+  <%= f.label :name %>
+  <%= f.text_field :name %>
+  <%= f.submit "Signin" %>
+<% end %>
+
+<p>Don't have an account? <%= link_to 'Sign up', new_user_path %></p>
